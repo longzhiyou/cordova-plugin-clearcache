@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin xmlns:android="http://schemas.android.com/apk/res/android" id="cordova-plugin-clearcache"
+    version="1.0.0"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0">
+    <js-module name="cordova-plugin-clearcache" src="www/cordova-plugin-clearcache.js">
+        <clobbers target="CordovaClearCache" />
+    </js-module>
+    <name>cordova-plugin-clearcache</name>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="cordova-plugin-clearcache">
+                <param name="android-package"
+                    value="com.jerym.clearCache.CordovaClearCache" />
+            </feature>
+        </config-file>
+
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+        </config-file>
+        <source-file src="src/android/CordovaClearCache.java"
+            target-dir="src/com/jerym/clearCache" />
+    </platform>
+</plugin>
