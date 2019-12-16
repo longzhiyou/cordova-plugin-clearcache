@@ -22,7 +22,7 @@ public class CordovaClearCache extends CordovaPlugin {
             return true;
         }
         if (action.equals("clearCacheAndExternalCache")) {
-            /* clear externalCacheDir and cacheDir*/
+            /* clear externalCacheDir and cacheDir */
             cordova.getThreadPool().execute(new Runnable() {
                 public void run() {
                     int result = clearCacheFolder(cordova.getActivity().getExternalCacheDir());
