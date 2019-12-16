@@ -1,0 +1,28 @@
+{
+  "name": "cordova-plugin-clearcache",
+  "version": "1.0.0",
+  "description": "clear cache or webview cache or externalcache",
+  "cordova": {
+    "id": "cordova-plugin-clearcache",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeryM/cordova-plugin-clearcache.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+	"clear cache",
+	"external cache",
+	"webview cache"
+  ],
+  "author": "jeryM",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeryM/cordova-plugin-clearcache/issues"
+  },
+  "homepage": "https://github.com/jeryM/cordova-plugin-clearcache#readme"
+}
