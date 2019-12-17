@@ -1,5 +1,9 @@
 package com.jerym.clearCache;
 
+import android.util.Log;
+import java.io.File;
+
+import org.apache.cordova.*;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
 
@@ -46,7 +50,7 @@ public class CordovaClearCache extends CordovaPlugin {
         }
 
         if ( action.equals("clearCacheOnly") ) {
-            Log.v(LOG_TAG, "Cordova Android Cache.clear() called.");
+            Log.i(TAG, "Cordova Android Cache.clear() called.");
             /* clear cacheDir from cordova.getActivity().getCacheDir() */
 
             cordova.getActivity().runOnUiThread( new Runnable() {
@@ -59,17 +63,13 @@ public class CordovaClearCache extends CordovaPlugin {
                         clearApplicationData();
 
                         // send success result to cordova
-                        PluginResult result = new PluginResult(PluginResult.Status.OK);
-                        result.setKeepCallback(false);
-                        callbackContext.sendPluginResult(result);
+                        callbackContext.success("success");
                     } catch ( Exception e ) {
                         String msg = "Error while clearing webview cache.";
-                        Log.e(LOG_TAG, msg );
+                        Log.e(TAG, msg );
 
                         // return error answer to cordova
-                        PluginResult result = new PluginResult(PluginResult.Status.ERROR, msg);
-                        result.setKeepCallback(false);
-                        callbackContext.sendPluginResult(result);
+                        callbackContext.error(msg);
                     }
                 }
             });
@@ -110,20 +110,20 @@ public class CordovaClearCache extends CordovaPlugin {
     private void clearApplicationData() {
         File cache = this.cordova.getActivity().getCacheDir();
         File appDir = new File(cache.getParent());
-        Log.i(LOG_TAG, "Absolute path: " + appDir.getAbsolutePath());
+        Log.i(TAG, "Absolute path: " + appDir.getAbsolutePath());
         if (appDir.exists()) {
             String[] children = appDir.list();
             for (String s : children) {
                 if (!s.equals("lib")) {
                     deleteDir(new File(appDir, s));
-                    Log.i(LOG_TAG, "File /data/data/APP_PACKAGE/" + s + " DELETED");
+                    Log.i(TAG, "File /data/data/APP_PACKAGE/" + s + " DELETED");
                 }
             }
         }
     }
 
-    private static boolean deleteDir(File dir) {
-        Log.i(LOG_TAG, "Deleting: " + dir.getAbsolutePath());
+    private boolean deleteDir(File dir) {
+        Log.i(TAG, "Deleting: " + dir.getAbsolutePath());
         if (dir != null && dir.isDirectory()) {
             String[] children = dir.list();
             for (int i = 0; i < children.length; i++) {
