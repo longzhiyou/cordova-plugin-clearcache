@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-clearcache",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "clear cache or webview cache or externalcache",
   "cordova": {
     "id": "cordova-plugin-clearcache",
@@ -15,9 +15,9 @@
   "keywords": [
     "ecosystem:cordova",
     "cordova-android",
-	"clear cache",
-	"external cache",
-	"webview cache"
+    "clear cache",
+    "external cache",
+    "webview cache"
   ],
   "author": "jeryM",
   "license": "ISC",
