@@ -4,6 +4,14 @@ clear externalCacheDir and cacheDir or webView cache
 ### install
 
 ~~~
+npm install cordova-plugin-clearcache
+
+or
+
+cordova plugin add cordova-plugin-clearcache
+
+or
+ 
 cordova plugin add https://github.com/jeryM/cordova-plugin-clearcache.git
 ~~~
 ### use
