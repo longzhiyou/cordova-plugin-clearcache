@@ -12,6 +12,6 @@ exports.webViewClearCache = function (arg0, success, error) {
     exec(success, error, 'CordovaClearCache', 'webViewClearCache', [arg0]);
 };
 
-exports.webViewClearCache = function (arg0, success, error) {
+exports.clearCacheOnly = function (arg0, success, error) {
     exec(success, error, 'CordovaClearCache', 'clearCacheOnly', [arg0]);
 };
