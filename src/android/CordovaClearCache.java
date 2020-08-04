@@ -39,13 +39,29 @@ public class CordovaClearCache extends CordovaPlugin {
         if(action.equals("webViewClearCache")){
             /* execute clearCache of this webView. */
             /* Clears the resource cache. Note that the cache is per-application, so this will clear the cache for all WebViews used */
-            boolean b = args.getBoolean(0);
-            if (b){
-                webView.clearCache(true);
-            }else {
-                webView.clearCache();
-            }
-            callbackContext.success("success");
+             cordova.getActivity().runOnUiThread( new Runnable() {
+                public void run() {
+                    try {
+                         boolean b = args.getBoolean(0);
+                            if (b){
+                                webView.clearCache(true);
+                            }else {
+                                webView.clearCache();
+                            }
+
+                        // send success result to cordova
+                        callbackContext.success("success");
+                    } catch ( Exception e ) {
+                        String msg = "Error while clearing webview cache.";
+                        Log.e(TAG, msg );
+
+                        // return error answer to cordova
+                        callbackContext.error(msg);
+                    }
+                }
+            });
+            
+          
             return true;
         }
 
